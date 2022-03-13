@@ -11,12 +11,11 @@ class BooksController < ApplicationController
   def create
      # ストロングパラメーターを使用
      @book = Book.new(book_params)
-     # DBへ保存する
+
      if @book.save
       # トップ画面へリダイレクト
      flash[:notice] = "Book was successfully updated."
      redirect_to "/books/#{@book.id}"
-
      else
      @books = Book.all
      render "index"
